@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.krosty > div {
+	position: relative;
+}
+
+.krosty > div:hover .krost {
+	box-shadow: 0 0 16px 4px red;
+}
+
+.krosty > div:active .krost {
+	filter: invert(100%);
+}
+
+.kroste {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.krosty > div:not(:hover) .kroste {
+	display: none;
+}
