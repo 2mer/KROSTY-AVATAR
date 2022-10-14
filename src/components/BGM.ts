@@ -1,13 +1,16 @@
+import isDev from '../util/isDev';
+
 export default function BGM() {
 	const audio = document.createElement('audio');
 	audio.src = '/assets/bgm.wav';
 	audio.controls = true;
 	audio.loop = true;
 	audio.volume = 0.3;
-	// audio.muted = true;
-	audio.oncanplay = () => {
-		audio.play();
-	};
+	audio.className = 'bgm';
+
+	const canPlay = !isDev();
+	audio.muted = !canPlay;
+
 	let audioScale = 1;
 	audio.onpause = () => {
 		setTimeout(() => {
@@ -15,12 +18,18 @@ export default function BGM() {
 			audio.play();
 		}, 1000);
 	};
-	let clicked = false;
-	document.onclick = () => {
-		if (!clicked) {
-			clicked = true;
+
+	if (canPlay) {
+		audio.oncanplay = () => {
 			audio.play();
-		}
-	};
+		};
+		let clicked = false;
+		document.onclick = () => {
+			if (!clicked) {
+				clicked = true;
+				audio.play();
+			}
+		};
+	}
 	return audio;
 }

@@ -4,6 +4,7 @@ import pop from '../util/pop';
 
 export default function (krosty: typeof krosties[number]) {
 	const container = document.createElement('div');
+	container.className = 'krosty__container';
 
 	const img = document.createElement('img');
 	img.src = krosty.image;
