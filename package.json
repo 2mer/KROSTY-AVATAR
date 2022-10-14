@@ -7,8 +7,7 @@
 		"start": "webpack serve",
 		"tailwind": "tailwindcss -i ./src/styles.css -o ./dist/styles.css",
 		"watch": "concurrently --names \"webpack,tailwind\" \"webpack --watch\" \"tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch\"",
-		"build": "pnpm run tailwind && webpack --mode production",
-		"prebuild": "test \"$CI\" = true && npx pnpm install -r --store=node_modules/.pnpm-store || echo skipping pnpm install"
+		"build": "npm run tailwind && webpack --mode production"
 	},
 	"keywords": [],
 	"author": "",
