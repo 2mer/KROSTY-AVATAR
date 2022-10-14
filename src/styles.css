@@ -38,7 +38,7 @@
 }
 
 .pixi-container {
-	position: absolute;
+	position: fixed;
 	inset: 0;
 	width: 100vw;
 	height: 100vh;
@@ -56,10 +56,22 @@
 }
 
 .compressor {
-	position: absolute;
+	position: fixed;
 	bottom: -126px;
 	width: 200px;
 	height: 200px;
 	left: 0px;
+}
 
+.bgm {
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	width: 184px;
+	height: 20px;
+}
+
+.krosty__container {
+	@apply sm:w-52;
+	@apply md:w-64;
 }

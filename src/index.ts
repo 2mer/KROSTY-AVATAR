@@ -22,7 +22,7 @@ krosties.forEach((k) => {
 });
 
 // ====== audio player ======
-krosty!.appendChild(BGM());
+document.body.appendChild(BGM());
 
 document.body.appendChild(pixi.container);
 
