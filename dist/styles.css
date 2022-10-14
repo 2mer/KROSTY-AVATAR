@@ -567,6 +567,10 @@ video {
   display: grid;
 }
 
+.hidden {
+  display: none;
+}
+
 .h-full {
   height: 100%;
 }
@@ -575,12 +579,12 @@ video {
   width: 100%;
 }
 
-.grid-cols-5 {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-.grid-rows-3 {
-  grid-template-rows: repeat(3, minmax(0, 1fr));
+.grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .gap-6 {
@@ -633,11 +637,19 @@ video {
   position: relative;
 }
 
+.download {
+  cursor: pointer;
+}
+
+.download:active {
+  transform: scale(0.9);
+}
+
 .krosty > div:hover .krost {
   box-shadow: 0 0 16px 4px red;
 }
 
-.krosty > div:active .krost {
+.krosty > div .krost:active {
   filter: invert(100%);
 }
 
@@ -654,4 +666,30 @@ video {
 
 .krosty > div:not(:hover) .kroste {
   display: none;
+}
+
+.pixi-container {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+.compressor__wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.compressor {
+  position: absolute;
+  bottom: -126px;
+  width: 200px;
+  height: 200px;
+  left: 0px;
 }

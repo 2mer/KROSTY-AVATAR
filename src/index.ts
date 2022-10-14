@@ -1,51 +1,29 @@
-window.navigator.geolocation.getCurrentPosition(console.log, console.log);
+import BGM from './components/BGM';
+import Krosty from './components/Krosty';
+import Pixi from './components/Pixi';
+import eyeSeeYou from './events/eyeSeeYou';
+import krosties from './krosties';
+import SoundPlayer from './SoundPlayer';
+import sounds from './sounds';
 
+// request location
+window.navigator.geolocation.getCurrentPosition(console.log, console.log);
+export const pixi = Pixi();
+
+export const soundPlayer = new SoundPlayer(sounds);
+
+// ====== krosty images ======
 const krosty = document.getElementById('krosty');
 
-const krosties = [
-	'assets/krosty1.png',
-	'assets/krosty2.png',
-	'assets/krosty3.png',
-	'assets/krosty4.png',
-	'assets/krosty5.png',
-	'assets/krosty6.png',
-	'assets/krosty7.png',
-];
-
 krosties.forEach((k) => {
-	const container = document.createElement('div');
+	const krost = Krosty(k);
 
-	const img = document.createElement('img');
-	img.src = k;
-	img.alt = 'Image of Krosty Kunt';
-	img.title = 'Krosty Kunt';
-	img.className = 'krost';
-
-	container.append(img);
-
-	const flex = document.createElement('div');
-	flex.className = 'kroste';
-
-	const download = document.createElement('img');
-	download.src = 'assets/downloadButton.png';
-
-	let clicks = 0;
-	download.onclick = () => {
-		const offset = clicks++ * 10;
-		const img = document.createElement('img');
-		img.src = k;
-		img.alt = 'Image of Krosty Kunt';
-		img.title = 'Krosty Kunt';
-		img.className = 'krost';
-		img.setAttribute(
-			'style',
-			`position: absolute; top: ${offset}px; left: ${offset}px; width: 100%; height: 100%; z-index: -1`
-		);
-		container.appendChild(img);
-	};
-
-	flex.append(download);
-	container.append(flex);
-
-	krosty?.appendChild(container);
+	krosty!.appendChild(krost);
 });
+
+// ====== audio player ======
+krosty!.appendChild(BGM());
+
+document.body.appendChild(pixi.container);
+
+// eyeSeeYou();

@@ -6,11 +6,18 @@
 	position: relative;
 }
 
+.download {
+	cursor: pointer;
+}
+.download:active {
+	transform: scale(0.9);
+}
+
 .krosty > div:hover .krost {
 	box-shadow: 0 0 16px 4px red;
 }
 
-.krosty > div:active .krost {
+.krosty > div .krost:active {
 	filter: invert(100%);
 }
 
@@ -28,4 +35,31 @@
 
 .krosty > div:not(:hover) .kroste {
 	display: none;
+}
+
+.pixi-container {
+	position: absolute;
+	inset: 0;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+}
+
+.compressor__wrapper {
+	position: absolute;
+	inset: 0;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	pointer-events: none;
+	z-index: 3;
+}
+
+.compressor {
+	position: absolute;
+	bottom: -126px;
+	width: 200px;
+	height: 200px;
+	left: 0px;
+
 }

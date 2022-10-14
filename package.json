@@ -6,14 +6,17 @@
 	"scripts": {
 		"start": "webpack serve",
 		"tailwind": "tailwindcss -i ./src/styles.css -o ./dist/styles.css",
-		"tailwind:watch": "tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch",
-		"webpack:watch": "webpack --watch",
+		"watch": "concurrently --names \"webpack,tailwind\" \"webpack --watch\" \"tailwindcss -i ./src/styles.css -o ./dist/styles.css --watch\"",
 		"build": "pnpm run tailwind && webpack"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
+		"@types/color": "^3.0.3",
+		"color": "^4.2.3",
+		"concurrently": "^7.4.0",
+		"gsap": "^3.11.3",
 		"pixi.js": "^6.5.6",
 		"tailwindcss": "^3.1.8",
 		"ts-loader": "^9.4.1",
