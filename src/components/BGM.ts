@@ -4,7 +4,7 @@ export default function BGM() {
 	audio.controls = true;
 	audio.loop = true;
 	audio.volume = 0.3;
-	audio.muted = true;
+	// audio.muted = true;
 	audio.oncanplay = () => {
 		audio.play();
 	};
@@ -14,6 +14,13 @@ export default function BGM() {
 			audio.style.transform = `scale(${(audioScale /= 2)})`;
 			audio.play();
 		}, 1000);
+	};
+	let clicked = false;
+	document.onclick = () => {
+		if (!clicked) {
+			clicked = true;
+			audio.play();
+		}
 	};
 	return audio;
 }
