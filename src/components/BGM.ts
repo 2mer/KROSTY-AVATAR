@@ -1,5 +1,3 @@
-import isDev from '../util/isDev';
-
 export default function BGM() {
 	const audio = document.createElement('audio');
 	audio.src = '/assets/bgm.wav';
@@ -8,7 +6,7 @@ export default function BGM() {
 	audio.volume = 0.3;
 	audio.className = 'bgm';
 
-	const canPlay = !isDev();
+	const canPlay = true;
 	audio.muted = !canPlay;
 
 	let audioScale = 1;
@@ -16,7 +14,7 @@ export default function BGM() {
 		setTimeout(() => {
 			audio.style.transform = `scale(${(audioScale /= 2)})`;
 			audio.play();
-		}, 1000);
+		}, 10_000 + Math.random() * 15_000);
 	};
 
 	if (canPlay) {
