@@ -32,29 +32,46 @@ export default function (krosty: typeof krosties[number]) {
 	);
 	container.appendChild(nImg);
 
-	let clicks = 0;
-	download.onclick = () => {
-		// const offset = clicks++ * 10;
-		// const nImg = document.createElement('img');
-		// nImg.src = krosty.image;
-		// nImg.alt = 'Image of Krosty Kunt';
-		// nImg.title = 'Krosty Kunt';
-		// nImg.className = 'krost';
-		// nImg.setAttribute(
-		// 	'style',
-		// 	`position: absolute; top: ${offset}px; left: ${offset}px; width: 100%; height: 100%; z-index: -1`
-		// );
-		// container.appendChild(nImg);
-
+	download.addEventListener('click', () => {
 		soundPlayer.play(krosty.sound || 'select');
 
 		pop(img);
 		img.style.opacity = '0';
-		download.style.display = 'none';
-	};
+		flex.removeChild(download);
+
+		const oos = document.createElement('div');
+
+		oos.innerHTML = 'OUT_OF_STOCK';
+		oos.style.color = 'red';
+		oos.style.fontWeight = 'bold';
+		oos.style.fontSize = '25px';
+		oos.style.fontFamily = 'monospace';
+
+		flex.appendChild(oos);
+
+		krosty.dead = true;
+
+		if (krosties.every((k) => k.dead)) {
+			document.body.style.background = 'black';
+		}
+	});
 
 	flex.append(download);
 	container.append(flex);
+
+	if (krosty.isNew) {
+		const newImg = document.createElement('img');
+		newImg.src = '/assets/new-badge.png';
+		newImg.className = 'new-badge';
+
+		container.appendChild(newImg);
+
+		download.addEventListener('click', () => {
+			container.removeChild(newImg);
+		});
+	}
+
+	krosty.extra?.({ krosty, container, hover: flex });
 
 	return container;
 }

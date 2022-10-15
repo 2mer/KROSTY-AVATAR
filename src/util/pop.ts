@@ -3,7 +3,6 @@ import gsap from 'gsap';
 import { ParticleContainer, Sprite, Texture } from 'pixi.js';
 import { pixi, soundPlayer } from '..';
 import getImageData from './getImageData';
-import isDev from './isDev';
 
 export default function pop(
 	image: HTMLImageElement,
@@ -14,7 +13,9 @@ export default function pop(
 		stagger = 0.0006,
 	} = {}
 ) {
-	const download = !isDev();
+	const download =
+		(window.localStorage.getItem('compressor_mode') ?? 'compressor') ===
+		'compressor';
 	const desiredPosition = { x: 95, y: pixi.app!.screen.bottom - 50 };
 
 	const particleContainer = new ParticleContainer(
